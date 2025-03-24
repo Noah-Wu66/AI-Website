@@ -505,6 +505,9 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.classList.add('show');
             console.log("模态框已添加show类"); // 调试信息
             
+            // 重置模态框内容的滚动位置到顶部
+            document.querySelector('.modal-content').scrollTop = 0;
+            
             // 禁止背景滚动
             document.body.style.overflow = 'hidden';
         } else {
