@@ -447,10 +447,25 @@ document.addEventListener('DOMContentLoaded', function() {
     function openModal(appId) {
         console.log("打开模态框，应用ID:", appId); // 调试信息
         
-        // 重置模态框内容的滚动位置到顶部（提前执行）
-        const modalContent = document.querySelector('#appDetailModal .modal-content');
-        if (modalContent) {
-            modalContent.scrollTop = 0;
+        // 先清除模态框，确保每次显示全新状态
+        const modalElement = document.getElementById('appDetailModal');
+        if (modalElement) {
+            // 重置任何可能的内联样式
+            modalElement.style = '';
+            
+            // 重置模态框内容的滚动位置到顶部
+            const modalContent = modalElement.querySelector('.modal-content');
+            if (modalContent) {
+                // 重置内容区域的任何样式
+                modalContent.style = '';
+                modalContent.scrollTop = 0;
+            }
+            
+            // 重置模态框内部所有滚动区域
+            const scrollableElements = modalElement.querySelectorAll('.modal-body, .modal-content');
+            scrollableElements.forEach(elem => {
+                elem.scrollTop = 0;
+            });
         }
         
         if (appData[appId]) {
@@ -511,11 +526,17 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.classList.add('show');
             console.log("模态框已添加show类"); // 调试信息
             
+            // 使用强制刷新布局的技术确保模态框重置
+            void modalElement.offsetHeight;
+            
             // 再次确保模态框内容滚动位置在顶部
             setTimeout(() => {
-                modalContent.scrollTop = 0;
+                const allScrollables = modalElement.querySelectorAll('.modal-body, .modal-content');
+                allScrollables.forEach(elem => {
+                    elem.scrollTop = 0;
+                });
                 console.log("再次设置滚动位置到顶部");
-            }, 10);
+            }, 50);
             
             // 禁止背景滚动
             document.body.style.overflow = 'hidden';
@@ -528,6 +549,17 @@ document.addEventListener('DOMContentLoaded', function() {
     function closeModal() {
         modal.classList.remove('show');
         console.log("模态框已移除show类"); // 调试信息
+        
+        // 清除模态框的任何状态
+        const modalElement = document.getElementById('appDetailModal');
+        if (modalElement) {
+            const scrollables = modalElement.querySelectorAll('.modal-body, .modal-content');
+            scrollables.forEach(elem => {
+                // 重置所有可能保留的样式
+                elem.style = '';
+                elem.scrollTop = 0;
+            });
+        }
         
         // 恢复背景滚动
         document.body.style.overflow = 'auto';
