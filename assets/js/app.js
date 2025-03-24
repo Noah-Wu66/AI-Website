@@ -447,6 +447,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function openModal(appId) {
         console.log("打开模态框，应用ID:", appId); // 调试信息
         
+        // 重置模态框内容的滚动位置到顶部（提前执行）
+        const modalContent = document.querySelector('#appDetailModal .modal-content');
+        if (modalContent) {
+            modalContent.scrollTop = 0;
+        }
+        
         if (appData[appId]) {
             const app = appData[appId];
             
@@ -505,8 +511,11 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.classList.add('show');
             console.log("模态框已添加show类"); // 调试信息
             
-            // 重置模态框内容的滚动位置到顶部
-            document.querySelector('.modal-content').scrollTop = 0;
+            // 再次确保模态框内容滚动位置在顶部
+            setTimeout(() => {
+                modalContent.scrollTop = 0;
+                console.log("再次设置滚动位置到顶部");
+            }, 10);
             
             // 禁止背景滚动
             document.body.style.overflow = 'hidden';
