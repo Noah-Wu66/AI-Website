@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 编程 | 智能编程助手</title>
+    <link rel="icon" href="assets/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="assets/img/favicon.png" alt="AI 应用集合">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="ai-chat.html">AI 对话</a></li>
+                    <li><a href="ai-image.html">AI 绘画</a></li>
+                    <li><a href="ai-video.html">AI 视频</a></li>
+                    <li><a href="ai-voice.html">AI 语音</a></li>
+                    <li><a href="ai-music.html">AI 音乐</a></li>
+                    <li><a href="ai-avatar.html">AI 数字人</a></li>
+                    <li><a href="ai-programming.html" class="active">AI 编程</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="ai-programming-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI <span>编程</span></h1>
+                <p>人工智能辅助编程工具，提升开发效率与代码质量</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section">
+        <div class="container">
+            <div class="app-grid">
+                <!-- Cursor -->
+                <div class="app-card">
+                    <div class="app-icon">
+                        <img src="assets/img/cursor.png" alt="Cursor">
+                    </div>
+                    <div class="app-info">
+                        <h3>Cursor</h3>
+                        <p class="app-desc">基于AI的代码编辑器，提供强大的代码补全、调试与重构功能</p>
+                        <div class="app-features">
+                            <span class="tag">免费</span>
+                            <span class="tag">代码编辑</span>
+                            <span class="tag">AI补全</span>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://www.cursor.com/" class="btn btn-outline" target="_blank">访问官网</a>
+                            <button class="btn btn-small btn-detail" data-app="cursor">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trae -->
+                <div class="app-card">
+                    <div class="app-icon">
+                        <img src="assets/img/trae.png" alt="Trae">
+                    </div>
+                    <div class="app-info">
+                        <h3>Trae</h3>
+                        <p class="app-desc">智能编程助手，支持代码解释、生成和重构，提高开发效率</p>
+                        <div class="app-features">
+                            <span class="tag">AI编程</span>
+                            <span class="tag">集成开发</span>
+                            <span class="tag">多语言支持</span>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://trae.ai/" class="btn btn-outline" target="_blank">访问官网</a>
+                            <button class="btn btn-small btn-detail" data-app="trae">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/img/favicon.png" alt="AI 应用集合">
+                    <p>探索AI的无限可能</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-link-group">
+                        <h4>分类</h4>
+                        <ul>
+                            <li><a href="ai-chat.html">AI 对话</a></li>
+                            <li><a href="ai-image.html">AI 绘画</a></li>
+                            <li><a href="ai-video.html">AI 视频</a></li>
+                            <li><a href="ai-voice.html">AI 语音</a></li>
+                            <li><a href="ai-music.html">AI 音乐</a></li>
+                            <li><a href="ai-avatar.html">AI 数字人</a></li>
+                            <li><a href="ai-programming.html">AI 编程</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-group">
+                        <h4>热门应用</h4>
+                        <ul>
+                            <li><a href="https://www.deepseek.com/" target="_blank">DeepSeek</a></li>
+                            <li><a href="https://www.midjourney.com/" target="_blank">Midjourney</a></li>
+                            <li><a href="https://klingapp.com/" target="_blank">可灵</a></li>
+                            <li><a href="https://github.com/fishaudio/fish-diffusion" target="_blank">Fish Audio</a></li>
+                            <li><a href="https://suno.com/" target="_blank">Suno AI</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI应用集合. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 模态对话框 -->
+    <div class="modal" id="appDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">应用详情</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-app-info">
+                    <div class="modal-app-icon">
+                        <img id="modalAppIcon" src="" alt="应用图标">
+                    </div>
+                    <div class="modal-app-header">
+                        <h3 id="modalAppName"></h3>
+                        <p id="modalAppCategory"></p>
+                    </div>
+                </div>
+                <div class="modal-app-content">
+                    <h4>简介</h4>
+                    <p id="modalAppIntro"></p>
+                    
+                    <h4>特点</h4>
+                    <ul id="modalAppFeatures"></ul>
+                    
+                    <div class="modal-app-evaluation">
+                        <div class="evaluation-item">
+                            <h4>优点</h4>
+                            <p id="modalAppPros"></p>
+                        </div>
+                        <div class="evaluation-item">
+                            <h4>缺点</h4>
+                            <p id="modalAppCons"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-app-links">
+                        <div class="link-item">
+                            <h4 id="websiteTitle">官方网址</h4>
+                            <div id="modalAppWebsites">
+                                <a id="modalAppWebsite" href="" target="_blank"></a>
+                            </div>
+                            <div id="deepseekWebsites" style="display: none;">
+                                <a id="deepseekWebsite" href="https://www.deepseek.com/" target="_blank"></a>
+                                <a href="https://www.wenxiaobai.com/" target="_blank"></a>
+                                <a href="https://yuanbao.tencent.com/" target="_blank"></a><br>
+                                <a href="https://askmanyai.cn/" target="_blank"></a>
+                            </div>
+                        </div>
+                        <div class="link-item">
+                            <h4>使用教程</h4>
+                            <a id="modalAppTutorial" href="" target="_blank"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 网站选择弹窗 -->
+    <div class="modal" id="websiteModal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2 id="websiteModalTitle">请选择访问站点</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="website-list">
+                    <a href="https://www.deepseek.com/" class="website-link" target="_blank">官网（DeepSeek）</a>
+                    <a href="https://www.wenxiaobai.com/" class="website-link" target="_blank">站点1（问小白）</a>
+                    <a href="https://yuanbao.tencent.com/" class="website-link" target="_blank">站点2（腾讯元宝）</a>
+                    <a href="https://askmanyai.cn/" class="website-link" target="_blank">站点3（AskManyAI）</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html> 

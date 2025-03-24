@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 对话 | 智能对话助手</title>
+    <link rel="icon" href="assets/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="assets/img/favicon.png" alt="AI 应用集合">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="ai-chat.html" class="active">AI 对话</a></li>
+                    <li><a href="ai-image.html">AI 绘画</a></li>
+                    <li><a href="ai-video.html">AI 视频</a></li>
+                    <li><a href="ai-voice.html">AI 语音</a></li>
+                    <li><a href="ai-music.html">AI 音乐</a></li>
+                    <li><a href="ai-avatar.html">AI 数字人</a></li>
+                    <li><a href="ai-programming.html">AI 编程</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="ai-chat-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI <span>对话</span></h1>
+                <p>智能对话助手，为您提供知识问答、创意写作与专业解答</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section">
+        <div class="container">
+            <div class="app-grid">
+                <!-- DeepSeek -->
+                <div class="app-card">
+                    <div class="app-icon">
+                        <img src="assets/img/deepseek.png" alt="DeepSeek">
+                    </div>
+                    <div class="app-info">
+                        <h3>DeepSeek</h3>
+                        <p class="app-desc">中国领先的开源大语言模型，推理能力强大，采用MoE架构</p>
+                        <div class="app-features">
+                            <span class="tag">免费</span>
+                            <span class="tag">开源</span>
+                            <span class="tag">中英双语</span>
+                        </div>
+                        <div class="app-links">
+                            <button class="btn btn-outline website-btn" data-app="deepseek">访问官网</button>
+                            <button class="btn btn-small btn-detail" data-app="deepseek">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 豆包 -->
+                <div class="app-card">
+                    <div class="app-icon">
+                        <img src="assets/img/doubao.png" alt="豆包">
+                    </div>
+                    <div class="app-info">
+                        <h3>豆包</h3>
+                        <p class="app-desc">字节跳动基于云雀大模型开发的AI助手，提供对话、创作、学习等多场景服务</p>
+                        <div class="app-features">
+                            <span class="tag">免费</span>
+                            <span class="tag">多功能</span>
+                            <span class="tag">效率工具</span>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://www.doubao.com/" class="btn btn-outline" target="_blank">访问官网</a>
+                            <button class="btn btn-small btn-detail" data-app="doubao">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 通义千问 -->
+                <div class="app-card">
+                    <div class="app-icon">
+                        <img src="assets/img/tongyi.png" alt="通义千问">
+                    </div>
+                    <div class="app-info">
+                        <h3>通义千问</h3>
+                        <p class="app-desc">阿里云自研通用大模型，擅长中文理解与长文本处理，编程效果佳</p>
+                        <div class="app-features">
+                            <span class="tag">免费</span>
+                            <span class="tag">编程强</span>
+                            <span class="tag">效率工具</span>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://tongyi.aliyun.com/" class="btn btn-outline" target="_blank">访问官网</a>
+                            <button class="btn btn-small btn-detail" data-app="tongyi">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MiniMax -->
+                <div class="app-card">
+                    <div class="app-icon">
+                        <img src="assets/img/minimax.png" alt="MiniMax">
+                    </div>
+                    <div class="app-info">
+                        <h3>MiniMax</h3>
+                        <p class="app-desc">提供多模态融合大模型，中文理解与生成能力强大</p>
+                        <div class="app-features">
+                            <span class="tag">综合能力强</span>
+                            <span class="tag">多模态</span>
+                            <span class="tag">API支持</span>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://chat.minimaxi.com/" class="btn btn-outline" target="_blank">访问官网</a>
+                            <button class="btn btn-small btn-detail" data-app="minimax">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 阶跃星辰 -->
+                <div class="app-card">
+                    <div class="app-icon">
+                        <img src="assets/img/yuewen.png" alt="阶跃星辰">
+                    </div>
+                    <div class="app-info">
+                        <h3>阶跃星辰</h3>
+                        <p class="app-desc">专注于通用人工智能技术研发，推出Step系列大模型</p>
+                        <div class="app-features">
+                            <span class="tag">免费</span>
+                            <span class="tag">多模态</span>
+                            <span class="tag">中文优化</span>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://www.yuewen.ai/" class="btn btn-outline" target="_blank">访问官网</a>
+                            <button class="btn btn-small btn-detail" data-app="yuewen">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/img/favicon.png" alt="AI 应用集合">
+                    <p>探索AI的无限可能</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-link-group">
+                        <h4>分类</h4>
+                        <ul>
+                            <li><a href="ai-chat.html">AI 对话</a></li>
+                            <li><a href="ai-image.html">AI 绘画</a></li>
+                            <li><a href="ai-video.html">AI 视频</a></li>
+                            <li><a href="ai-voice.html">AI 语音</a></li>
+                            <li><a href="ai-music.html">AI 音乐</a></li>
+                            <li><a href="ai-avatar.html">AI 数字人</a></li>
+                            <li><a href="ai-programming.html">AI 编程</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-group">
+                        <h4>热门应用</h4>
+                        <ul>
+                            <li><a href="https://www.deepseek.com/" target="_blank">DeepSeek</a></li>
+                            <li><a href="https://www.midjourney.com/" target="_blank">Midjourney</a></li>
+                            <li><a href="https://klingapp.com/" target="_blank">可灵</a></li>
+                            <li><a href="https://github.com/fishaudio/fish-diffusion" target="_blank">Fish Audio</a></li>
+                            <li><a href="https://suno.com/" target="_blank">Suno AI</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI应用集合. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 模态对话框 -->
+    <div class="modal" id="appDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">应用详情</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-app-info">
+                    <div class="modal-app-icon">
+                        <img id="modalAppIcon" src="" alt="应用图标">
+                    </div>
+                    <div class="modal-app-header">
+                        <h3 id="modalAppName"></h3>
+                        <p id="modalAppCategory"></p>
+                    </div>
+                </div>
+                <div class="modal-app-content">
+                    <h4>简介</h4>
+                    <p id="modalAppIntro"></p>
+                    
+                    <h4>特点</h4>
+                    <ul id="modalAppFeatures"></ul>
+                    
+                    <div class="modal-app-evaluation">
+                        <div class="evaluation-item">
+                            <h4>优点</h4>
+                            <p id="modalAppPros"></p>
+                        </div>
+                        <div class="evaluation-item">
+                            <h4>缺点</h4>
+                            <p id="modalAppCons"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-app-links">
+                        <div class="link-item">
+                            <h4 id="websiteTitle">官方网址</h4>
+                            <div id="modalAppWebsites">
+                                <a id="modalAppWebsite" href="" target="_blank"></a>
+                            </div>
+                            <div id="deepseekWebsites" style="display: none;">
+                                <a id="deepseekWebsite" href="https://www.deepseek.com/" target="_blank"></a>
+                                <a href="https://www.wenxiaobai.com/" target="_blank"></a>
+                                <a href="https://yuanbao.tencent.com/" target="_blank"></a><br>
+                                <a href="https://askmanyai.cn/" target="_blank"></a>
+                            </div>
+                        </div>
+                        <div class="link-item">
+                            <h4>使用教程</h4>
+                            <a id="modalAppTutorial" href="" target="_blank"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 网站选择弹窗 -->
+    <div class="modal" id="websiteModal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2 id="websiteModalTitle">请选择访问站点</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="website-list">
+                    <a href="https://www.deepseek.com/" class="website-link" target="_blank">官网（DeepSeek）</a>
+                    <a href="https://www.wenxiaobai.com/" class="website-link" target="_blank">站点1（问小白）</a>
+                    <a href="https://yuanbao.tencent.com/" class="website-link" target="_blank">站点2（腾讯元宝）</a>
+                    <a href="https://askmanyai.cn/" class="website-link" target="_blank">站点3（AskManyAI）</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html> 

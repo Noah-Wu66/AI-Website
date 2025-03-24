@@ -808,64 +808,71 @@ footer {
     }
 }
 
-/* 下拉菜单样式 */
-.dropdown {
+/* 下拉菜单容器 */
+.dropdown-container {
     position: relative;
     display: inline-block;
+    min-width: 200px;
 }
 
-.dropdown-toggle {
-    cursor: pointer;
-    display: inline-flex;
+.dropdown-header {
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    font-size: 16px;
 }
 
-.dropdown-toggle::after {
-    content: '';
-    display: inline-block;
-    margin-left: 8px;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid currentColor;
+.dropdown-header:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
 }
 
 .dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: 110%;
     left: 0;
-    z-index: 1000;
-    display: none;
-    min-width: 180px;
-    padding: 8px 0;
-    margin: 5px 0 0;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 10px 0;
     opacity: 0;
+    visibility: hidden;
     transform: translateY(-10px);
-    transition: opacity 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
+    z-index: 100;
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
+.dropdown-container:hover .dropdown-menu {
     opacity: 1;
+    visibility: visible;
     transform: translateY(0);
 }
 
-.dropdown-menu a {
+.dropdown-item {
     display: block;
-    padding: 8px 16px;
-    color: #333;
-    text-decoration: none;
-    transition: background-color 0.2s;
-    font-size: 14px;
+    padding: 10px 20px;
+    color: var(--secondary-color);
+    transition: var(--transition);
+    font-size: 15px;
 }
 
-.dropdown-menu a:hover {
-    background-color: #f5f5f5;
-    color: #007bff;
+.dropdown-item:hover {
+    background-color: var(--light-gray);
+    color: var(--primary-color);
+}
+
+@media screen and (max-width: 768px) {
+    .dropdown-container {
+        width: 100%;
+    }
 }
 
 /* 详情页使用网址列表样式 */
