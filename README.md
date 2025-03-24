@@ -25,17 +25,20 @@
 
 ### 使用Live Server (推荐)
 
-如果您安装了VSCode，可以安装Live Server扩展，然后右键点击`app/index.html`文件，选择"Open with Live Server"。
+如果您安装了VSCode，可以安装Live Server扩展，然后右键点击`public/index.html`文件，选择"Open with Live Server"。
 
 ### 直接打开文件
 
-您也可以直接在浏览器中打开`app/index.html`文件。
+您也可以直接在浏览器中打开`public/index.html`文件。
 
 ### 使用HTTP服务器
 
 如果您已安装Python，可以在项目根目录运行以下命令：
 
 ```bash
+# 进入public目录
+cd public
+
 # Python 3.x
 python -m http.server
 
@@ -43,20 +46,20 @@ python -m http.server
 python -m SimpleHTTPServer
 ```
 
-然后在浏览器中访问 `http://localhost:8000/app/`
+然后在浏览器中访问 `http://localhost:8000/`
 
 ## 项目结构
 
 ```
 /
-├── app/                # 应用主目录
-│   ├── assets/         # 静态资源
-│   │   ├── css/        # CSS样式
-│   │   ├── js/         # JavaScript文件
-│   │   └── img/        # 图片资源
-│   └── index.html      # 主页
-├── favicon/            # 原始图标
-└── README.md           # 项目说明
+├── public/            # 静态网站根目录
+│   ├── assets/        # 静态资源
+│   │   ├── css/       # CSS样式
+│   │   ├── js/        # JavaScript文件
+│   │   └── img/       # 图片资源
+│   └── index.html     # 主页
+├── app/               # 旧版应用目录(不再使用)
+└── README.md          # 项目说明
 ```
 
 ## 技术栈
