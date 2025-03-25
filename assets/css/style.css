@@ -529,13 +529,13 @@ footer {
     
     .dropdown-menu {
         position: absolute;
-        top: auto;
-        bottom: 110%;
+        top: 110%;
+        bottom: auto;
         left: 0;
         width: 100%;
         background-color: white;
         border-radius: 12px;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         padding: 15px 0;
         opacity: 0;
         visibility: hidden;
@@ -564,7 +564,7 @@ footer {
     }
     
     .dropdown-container.active .dropdown-header i {
-        transform: rotate(-180deg);
+        transform: rotate(180deg);
     }
 }
 
@@ -600,6 +600,8 @@ footer {
         width: 100%;
         min-width: unset;
         border-radius: 10px;
+        top: 110%;
+        bottom: auto;
     }
     
     .dropdown-item {

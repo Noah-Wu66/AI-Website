@@ -38,11 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     menu.style.width = '100%';
                     menu.style.backgroundColor = 'white';
                     menu.style.borderRadius = '12px';
-                    menu.style.boxShadow = '0 -4px 20px rgba(0, 0, 0, 0.1)';
+                    menu.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
                     menu.style.padding = '15px 0';
                     menu.style.zIndex = '100';
-                    menu.style.top = 'auto';
-                    menu.style.bottom = '110%';
+                    menu.style.top = '110%';  // 修改为顶部定位，在按钮下方显示
+                    menu.style.bottom = 'auto';  // 取消底部定位
                     menu.style.left = '0';
                 }
                 
@@ -97,11 +97,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 dropdownMenu.style.opacity = '1';
                 dropdownMenu.style.visibility = 'visible';
                 
-                // 设置合适的位置，移动端在上方，桌面端在下方
+                // 设置合适的位置，移动端和桌面端都在下方
                 if (window.innerWidth <= 768) {
-                    dropdownMenu.style.top = 'auto';
-                    dropdownMenu.style.bottom = '110%';
-                    dropdownHeader.querySelector('i').style.transform = 'rotate(-180deg)';
+                    dropdownMenu.style.bottom = 'auto';
+                    dropdownMenu.style.top = '110%';
+                    dropdownHeader.querySelector('i').style.transform = 'rotate(180deg)';
                 } else {
                     dropdownMenu.style.bottom = 'auto';
                     dropdownMenu.style.top = '110%';
@@ -759,4 +759,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    // 页面加载完成后检查是否需要滚动到工具展示区域
+    const isAiCategoryPage = document.location.pathname.includes('ai-') && !document.location.pathname.includes('index.html');
+    
+    if (isAiCategoryPage) {
+        // 获取分类区域
+        const categorySection = document.querySelector('.category-section');
+        
+        if (categorySection) {
+            // 延迟一下滚动操作，确保页面加载完毕
+            setTimeout(function() {
+                // 滚动到分类区域的顶部
+                window.scrollTo({
+                    top: categorySection.offsetTop - 100, // 减去额外空间让标题在视图范围内
+                    behavior: 'smooth'
+                });
+            }, 300);
+        }
+    }
 }); 
