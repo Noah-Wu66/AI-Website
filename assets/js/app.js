@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     menu.style.borderRadius = '12px';
                     menu.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
                     menu.style.padding = '15px 0';
-                    menu.style.zIndex = '1000';
+                    menu.style.zIndex = '2000';
                     menu.style.top = '110%';  // 修改为顶部定位，在按钮下方显示
                     menu.style.bottom = 'auto';  // 取消底部定位
                     menu.style.left = '0';
