@@ -22,6 +22,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // 处理下拉菜单点击事件
+    const dropdownContainers = document.querySelectorAll('.dropdown-container');
+    
+    dropdownContainers.forEach(container => {
+        const dropdownHeader = container.querySelector('.dropdown-header');
+        
+        dropdownHeader.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // 关闭其他打开的下拉菜单
+            dropdownContainers.forEach(otherContainer => {
+                if (otherContainer !== container && otherContainer.classList.contains('active')) {
+                    otherContainer.classList.remove('active');
+                }
+            });
+            
+            // 切换当前下拉菜单状态
+            container.classList.toggle('active');
+        });
+    });
+    
+    // 点击页面其他区域关闭下拉菜单
+    document.addEventListener('click', function() {
+        dropdownContainers.forEach(container => {
+            if (container.classList.contains('active')) {
+                container.classList.remove('active');
+            }
+        });
+    });
+    
     // 平滑滚动到锚点
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
