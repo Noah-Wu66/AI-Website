@@ -524,7 +524,7 @@ footer {
         width: 100%;
         max-width: 100%;
         position: relative;
-        z-index: 100;
+        z-index: 1000;
     }
     
     .dropdown-menu {
@@ -541,7 +541,7 @@ footer {
         visibility: hidden;
         transform: translateY(10px);
         transition: all 0.3s ease;
-        z-index: 100;
+        z-index: 1000;
         display: none;
     }
     
@@ -879,7 +879,7 @@ footer {
     min-width: 200px;
     width: auto;
     box-sizing: border-box;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .dropdown-header {
@@ -917,7 +917,7 @@ footer {
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 100;
+    z-index: 1000;
     box-sizing: border-box;
 }
 
