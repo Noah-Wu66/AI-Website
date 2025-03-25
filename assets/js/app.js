@@ -34,16 +34,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // 设置菜单样式
                 if (menu) {
-                    menu.style.position = 'absolute';
+                    menu.style.position = 'fixed';
                     menu.style.width = '100%';
                     menu.style.backgroundColor = 'white';
                     menu.style.borderRadius = '12px';
                     menu.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
                     menu.style.padding = '15px 0';
-                    menu.style.zIndex = '2000';
-                    menu.style.top = '110%';  // 修改为顶部定位，在按钮下方显示
-                    menu.style.bottom = 'auto';  // 取消底部定位
-                    menu.style.left = '0';
+                    menu.style.zIndex = '9999';
                 }
                 
                 // 设置每个菜单项的样式
@@ -97,16 +94,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 dropdownMenu.style.opacity = '1';
                 dropdownMenu.style.visibility = 'visible';
                 
-                // 设置合适的位置，移动端和桌面端都在下方
-                if (window.innerWidth <= 768) {
-                    dropdownMenu.style.bottom = 'auto';
-                    dropdownMenu.style.top = '110%';
-                    dropdownHeader.querySelector('i').style.transform = 'rotate(180deg)';
-                } else {
-                    dropdownMenu.style.bottom = 'auto';
-                    dropdownMenu.style.top = '110%';
-                    dropdownHeader.querySelector('i').style.transform = 'rotate(180deg)';
-                }
+                // 计算位置，确保菜单始终显示在按钮下方
+                const headerRect = dropdownHeader.getBoundingClientRect();
+                dropdownMenu.style.top = (headerRect.bottom + 5) + 'px'; // 按钮底部位置 + 5px间距
+                dropdownMenu.style.left = headerRect.left + 'px';
+                dropdownMenu.style.width = headerRect.width + 'px';
+                
+                // 设置旋转动画
+                dropdownHeader.querySelector('i').style.transform = 'rotate(180deg)';
             } else {
                 // 关闭菜单
                 dropdownMenu.style.display = 'none';

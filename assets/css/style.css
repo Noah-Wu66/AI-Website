@@ -526,14 +526,13 @@ footer {
         width: 100%;
         max-width: 100%;
         position: relative;
-        z-index: 2000;
+        z-index: 9999;
     }
     
     .dropdown-menu {
-        position: absolute;
-        top: 110%;
-        bottom: auto;
-        left: 0;
+        position: fixed;
+        top: auto;
+        left: auto;
         width: 100%;
         background-color: white;
         border-radius: 12px;
@@ -543,7 +542,7 @@ footer {
         visibility: hidden;
         transform: translateY(10px);
         transition: all 0.3s ease;
-        z-index: 2000;
+        z-index: 9999;
         display: none;
     }
     
@@ -881,7 +880,7 @@ footer {
     min-width: 200px;
     width: auto;
     box-sizing: border-box;
-    z-index: 2000;
+    z-index: 9999;
 }
 
 .dropdown-header {
@@ -906,9 +905,9 @@ footer {
 }
 
 .dropdown-menu {
-    position: absolute;
-    top: 110%;
-    left: 0;
+    position: fixed;
+    top: auto;
+    left: auto;
     width: 100%;
     min-width: 200px;
     background-color: white;
@@ -919,7 +918,7 @@ footer {
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 2000;
+    z-index: 9999;
     box-sizing: border-box;
 }
 
