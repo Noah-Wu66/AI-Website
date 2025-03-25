@@ -522,16 +522,38 @@ footer {
     
     .dropdown-container {
         width: 100%;
+        max-width: 100%;
     }
     
     .dropdown-menu {
         top: auto;
         bottom: 110%;
         transform: translateY(10px);
+        min-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: white;
+        padding: 10px 0;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        z-index: 100;
+        overflow: hidden;
+        display: block;
+    }
+    
+    .dropdown-item {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px 20px;
+        display: block;
+        text-align: center;
+        background-color: white;
     }
     
     .dropdown-container.active .dropdown-menu {
         transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
     }
     
     .dropdown-container.active .dropdown-header i {
@@ -560,6 +582,21 @@ footer {
     
     .website-link {
         padding: 10px 14px;
+        font-size: 14px;
+    }
+    
+    .dropdown-container {
+        width: 100%;
+    }
+    
+    .dropdown-menu {
+        width: 100%;
+        min-width: unset;
+        border-radius: 10px;
+    }
+    
+    .dropdown-item {
+        padding: 12px 15px;
         font-size: 14px;
     }
 }
@@ -831,6 +868,8 @@ footer {
     position: relative;
     display: inline-block;
     min-width: 200px;
+    width: auto;
+    box-sizing: border-box;
 }
 
 .dropdown-header {
@@ -845,6 +884,8 @@ footer {
     transition: var(--transition);
     font-weight: 500;
     font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .dropdown-header:hover {
@@ -857,6 +898,7 @@ footer {
     top: 110%;
     left: 0;
     width: 100%;
+    min-width: 200px;
     background-color: white;
     border-radius: 12px;
     box-shadow: var(--shadow);
@@ -866,6 +908,7 @@ footer {
     transform: translateY(-10px);
     transition: all 0.3s ease;
     z-index: 100;
+    box-sizing: border-box;
 }
 
 .dropdown-container:hover .dropdown-menu {
@@ -893,6 +936,10 @@ footer {
     color: var(--secondary-color);
     transition: var(--transition);
     font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    text-align: center;
 }
 
 .dropdown-item:hover {
