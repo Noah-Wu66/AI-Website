@@ -373,7 +373,7 @@ footer {
     color: white;
     padding: 80px 0 30px;
     position: relative;
-    z-index: 10;
+    z-index: 5;
 }
 
 .footer-content {
@@ -903,7 +903,7 @@ footer {
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 10000;
+    z-index: 11000;
     box-sizing: border-box;
 }
 

@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     menu.style.borderRadius = '12px';
                     menu.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
                     menu.style.padding = '15px 0';
-                    menu.style.zIndex = '9999';
+                    menu.style.zIndex = '11000'; // 提高z-index确保在页脚之上
                 }
                 
                 // 设置每个菜单项的样式
@@ -119,8 +119,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 检查菜单是否会超出视口底部
                 setTimeout(() => {
                     const menuRect = dropdownMenu.getBoundingClientRect();
+                    
+                    // 检查是否接近页脚
+                    const footer = document.querySelector('footer');
+                    const footerRect = footer ? footer.getBoundingClientRect() : null;
+                    
                     if (menuRect.bottom > window.innerHeight) {
                         // 如果超出，则将菜单放在按钮上方
+                        dropdownMenu.style.top = (headerRect.top - menuRect.height - 5) + 'px';
+                    } else if (footerRect && menuRect.bottom > footerRect.top && footerRect.top < window.innerHeight) {
+                        // 如果菜单将与可见的页脚重叠，将其调整到按钮上方
                         dropdownMenu.style.top = (headerRect.top - menuRect.height - 5) + 'px';
                     }
                 }, 0);
@@ -177,8 +185,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 检查菜单是否会超出视口底部
                     setTimeout(() => {
                         const menuRect = dropdownMenu.getBoundingClientRect();
+                        
+                        // 检查是否接近页脚
+                        const footer = document.querySelector('footer');
+                        const footerRect = footer ? footer.getBoundingClientRect() : null;
+                        
                         if (menuRect.bottom > window.innerHeight) {
                             // 如果超出，则将菜单放在按钮上方
+                            dropdownMenu.style.top = (menuPosition.headerRect.top - menuRect.height - 5) + 'px';
+                        } else if (footerRect && menuRect.bottom > footerRect.top && footerRect.top < window.innerHeight) {
+                            // 如果菜单将与可见的页脚重叠，将其调整到按钮上方
                             dropdownMenu.style.top = (menuPosition.headerRect.top - menuRect.height - 5) + 'px';
                         }
                     }, 0);
@@ -200,7 +216,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // 如果菜单底部超出视口，向上调整位置
                 const menuRect = item.menu.getBoundingClientRect();
+                
+                // 检查是否接近页脚
+                const footer = document.querySelector('footer');
+                const footerRect = footer ? footer.getBoundingClientRect() : null;
+                
                 if (menuRect.bottom > window.innerHeight) {
+                    // 调整到按钮上方
+                    item.menu.style.top = (headerRect.top - menuRect.height - 5) + 'px';
+                } else if (footerRect && menuRect.bottom > footerRect.top && footerRect.top < window.innerHeight) {
+                    // 如果菜单将与可见的页脚重叠，将其调整到按钮上方
                     item.menu.style.top = (headerRect.top - menuRect.height - 5) + 'px';
                 }
             }
