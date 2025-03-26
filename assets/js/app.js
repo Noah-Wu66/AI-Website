@@ -116,6 +116,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 dropdownMenu.style.left = headerRect.left + 'px';
                 dropdownMenu.style.width = headerRect.width + 'px';
                 
+                // 检查菜单是否会超出视口底部
+                setTimeout(() => {
+                    const menuRect = dropdownMenu.getBoundingClientRect();
+                    if (menuRect.bottom > window.innerHeight) {
+                        // 如果超出，则将菜单放在按钮上方
+                        dropdownMenu.style.top = (headerRect.top - menuRect.height - 5) + 'px';
+                    }
+                }, 0);
+                
                 // 将当前打开的下拉菜单添加到活动数组中
                 activeDropdowns.push({
                     container: container,
@@ -164,6 +173,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     dropdownMenu.style.top = (menuPosition.headerRect.bottom + 5) + 'px';
                     dropdownMenu.style.left = menuPosition.headerRect.left + 'px';
                     dropdownMenu.style.width = menuPosition.headerRect.width + 'px';
+                    
+                    // 检查菜单是否会超出视口底部
+                    setTimeout(() => {
+                        const menuRect = dropdownMenu.getBoundingClientRect();
+                        if (menuRect.bottom > window.innerHeight) {
+                            // 如果超出，则将菜单放在按钮上方
+                            dropdownMenu.style.top = (menuPosition.headerRect.top - menuRect.height - 5) + 'px';
+                        }
+                    }, 0);
                 }
             });
         }
@@ -175,9 +193,16 @@ document.addEventListener('DOMContentLoaded', function() {
         activeDropdowns.forEach(item => {
             if (item.container.classList.contains('active')) {
                 const headerRect = item.header.getBoundingClientRect();
+                // 确保菜单始终跟随按钮
                 item.menu.style.top = (headerRect.bottom + 5) + 'px';
                 item.menu.style.left = headerRect.left + 'px';
                 item.menu.style.width = headerRect.width + 'px';
+                
+                // 如果菜单底部超出视口，向上调整位置
+                const menuRect = item.menu.getBoundingClientRect();
+                if (menuRect.bottom > window.innerHeight) {
+                    item.menu.style.top = (headerRect.top - menuRect.height - 5) + 'px';
+                }
             }
         });
     });
