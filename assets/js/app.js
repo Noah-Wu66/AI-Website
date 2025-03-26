@@ -25,55 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 处理下拉菜单点击事件 - 全新实现
     const dropdownContainers = document.querySelectorAll('.dropdown-container');
     
-    // 直接设置样式，解决移动端样式问题
-    function fixMobileDropdowns() {
-        if (window.innerWidth <= 768) {
-            dropdownContainers.forEach(container => {
-                const menu = container.querySelector('.dropdown-menu');
-                const items = container.querySelectorAll('.dropdown-item');
-                
-                // 设置菜单样式
-                if (menu) {
-                    menu.style.position = 'fixed';
-                    menu.style.width = '100%';
-                    menu.style.backgroundColor = 'white';
-                    menu.style.borderRadius = '12px';
-                    menu.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-                    menu.style.padding = '15px 0';
-                    menu.style.zIndex = '11000'; // 提高z-index确保在页脚之上
-                }
-                
-                // 设置每个菜单项的样式
-                items.forEach(item => {
-                    item.style.display = 'block';
-                    item.style.width = '100%';
-                    item.style.padding = '12px 20px';
-                    item.style.color = '#3c3c43';
-                    item.style.backgroundColor = 'white';
-                    item.style.textAlign = 'center';
-                    item.style.margin = '0';
-                    item.style.boxSizing = 'border-box';
-                });
-            });
-        }
-    }
-    
-    // 页面加载和窗口调整时都要修复样式
-    fixMobileDropdowns();
-    window.addEventListener('resize', fixMobileDropdowns);
-    
-    // 存储所有下拉菜单的状态
-    let activeDropdowns = [];
-    
     dropdownContainers.forEach(container => {
         const dropdownHeader = container.querySelector('.dropdown-header');
-        const dropdownMenu = container.querySelector('.dropdown-menu');
-        
-        // 记录菜单初始位置信息
-        let menuPosition = {
-            headerRect: null,
-            isOpen: false
-        };
         
         // 处理点击事件
         dropdownHeader.addEventListener('click', function(e) {
@@ -84,128 +37,71 @@ document.addEventListener('DOMContentLoaded', function() {
             dropdownContainers.forEach(otherContainer => {
                 if (otherContainer !== container && otherContainer.classList.contains('active')) {
                     otherContainer.classList.remove('active');
-                    const otherMenu = otherContainer.querySelector('.dropdown-menu');
-                    if (otherMenu) {
-                        otherMenu.style.display = 'none';
-                        otherMenu.style.opacity = '0';
-                        otherMenu.style.visibility = 'hidden';
-                    }
                 }
             });
-            
-            // 更新activeDropdowns数组
-            activeDropdowns = activeDropdowns.filter(item => item.container !== container);
             
             // 切换当前下拉菜单状态
-            const isActive = container.classList.contains('active');
             container.classList.toggle('active');
             
-            // 直接控制菜单显示/隐藏
-            if (!isActive) {
-                // 打开菜单
-                dropdownMenu.style.display = 'block';
-                dropdownMenu.style.opacity = '1';
-                dropdownMenu.style.visibility = 'visible';
+            // 确保菜单在激活状态下不被其他元素遮挡
+            if (container.classList.contains('active')) {
+                // 将该下拉菜单临时提升到页面最顶层
+                container.style.position = 'relative';
+                container.style.zIndex = '99999';
                 
-                // 计算位置，确保菜单始终显示在按钮下方
-                const headerRect = dropdownHeader.getBoundingClientRect();
-                menuPosition.headerRect = headerRect;
-                menuPosition.isOpen = true;
-                
-                // 使用fixed定位，相对于视口固定，不会随滚动移动
-                dropdownMenu.style.position = 'fixed';
-                dropdownMenu.style.top = (headerRect.bottom + 5) + 'px'; // 按钮底部位置 + 5px间距
-                dropdownMenu.style.left = headerRect.left + 'px';
-                dropdownMenu.style.width = headerRect.width + 'px';
-                
-                // 检查菜单是否会超出视口底部
-                setTimeout(() => {
-                    const menuRect = dropdownMenu.getBoundingClientRect();
+                // 获取下拉菜单元素
+                const menu = container.querySelector('.dropdown-menu');
+                if (menu) {
+                    // 确保菜单显示在所有元素之上
+                    menu.style.zIndex = '99999';
                     
-                    // 检查是否接近页脚
-                    const footer = document.querySelector('footer');
-                    const footerRect = footer ? footer.getBoundingClientRect() : null;
-                    
-                    if (menuRect.bottom > window.innerHeight) {
-                        // 如果超出，则将菜单放在按钮上方
-                        dropdownMenu.style.top = (headerRect.top - menuRect.height - 5) + 'px';
-                    } else if (footerRect && menuRect.bottom > footerRect.top && footerRect.top < window.innerHeight) {
-                        // 如果菜单将与可见的页脚重叠，将其调整到按钮上方
-                        dropdownMenu.style.top = (headerRect.top - menuRect.height - 5) + 'px';
-                    }
-                }, 0);
-                
-                // 将当前打开的下拉菜单添加到活动数组中
-                activeDropdowns.push({
-                    container: container,
-                    header: dropdownHeader,
-                    menu: dropdownMenu
-                });
-                
-                // 设置旋转动画
-                dropdownHeader.querySelector('i').style.transform = 'rotate(180deg)';
-            } else {
-                // 关闭菜单
-                dropdownMenu.style.display = 'none';
-                dropdownMenu.style.opacity = '0';
-                dropdownMenu.style.visibility = 'hidden';
-                dropdownHeader.querySelector('i').style.transform = 'rotate(0)';
-                menuPosition.isOpen = false;
-                
-                // 从活动数组中移除
-                activeDropdowns = activeDropdowns.filter(item => item.container !== container);
-            }
-            
-            console.log('下拉菜单点击:', !isActive ? '打开' : '关闭');
-        });
-        
-        // 添加触摸事件处理，防止拖动时菜单跟随移动
-        if (dropdownMenu) {
-            // 阻止触摸移动事件
-            dropdownMenu.addEventListener('touchmove', function(e) {
-                if (container.classList.contains('active')) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-            }, { passive: false });
-            
-            // 阻止鼠标拖动事件
-            dropdownMenu.addEventListener('mousedown', function(e) {
-                if (container.classList.contains('active')) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-            });
-            
-            // 触摸结束时恢复正确位置
-            dropdownMenu.addEventListener('touchend', function() {
-                if (menuPosition.isOpen && menuPosition.headerRect) {
-                    // 不再重置位置，让菜单保持在固定位置
-                    /*
-                    dropdownMenu.style.top = (menuPosition.headerRect.bottom + 5) + 'px';
-                    dropdownMenu.style.left = menuPosition.headerRect.left + 'px';
-                    dropdownMenu.style.width = menuPosition.headerRect.width + 'px';
-                    
-                    // 检查菜单是否会超出视口底部
+                    // 检查是否有可能被页脚遮挡
                     setTimeout(() => {
-                        const menuRect = dropdownMenu.getBoundingClientRect();
+                        const menuRect = menu.getBoundingClientRect();
+                        const viewportHeight = window.innerHeight;
                         
-                        // 检查是否接近页脚
+                        // 查找页脚
                         const footer = document.querySelector('footer');
                         const footerRect = footer ? footer.getBoundingClientRect() : null;
                         
-                        if (menuRect.bottom > window.innerHeight) {
-                            // 如果超出，则将菜单放在按钮上方
-                            dropdownMenu.style.top = (menuPosition.headerRect.top - menuRect.height - 5) + 'px';
-                        } else if (footerRect && menuRect.bottom > footerRect.top && footerRect.top < window.innerHeight) {
-                            // 如果菜单将与可见的页脚重叠，将其调整到按钮上方
-                            dropdownMenu.style.top = (menuPosition.headerRect.top - menuRect.height - 5) + 'px';
+                        // 如果页脚可见且可能与菜单重叠
+                        if (footerRect && footerRect.top < viewportHeight && menuRect.bottom > footerRect.top) {
+                            // 如果页脚与菜单重叠，尝试通过滚动页面来解决
+                            const scrollAmount = menuRect.height + 50; // 菜单高度加额外间距
+                            
+                            // 首先尝试滚动页面，使菜单完全可见
+                            window.scrollBy({
+                                top: -scrollAmount, // 向上滚动
+                                behavior: 'smooth'
+                            });
+                            
+                            // 滚动后再次检查位置
+                            setTimeout(() => {
+                                const updatedMenuRect = menu.getBoundingClientRect();
+                                const updatedFooterRect = footer.getBoundingClientRect();
+                                
+                                // 如果滚动后仍然重叠，则调整菜单高度
+                                if (updatedFooterRect.top < viewportHeight && updatedMenuRect.bottom > updatedFooterRect.top) {
+                                    const maxHeight = updatedFooterRect.top - updatedMenuRect.top - 10;
+                                    menu.style.maxHeight = Math.max(200, maxHeight) + 'px'; // 至少保留200px高度
+                                    menu.style.overflowY = 'auto';
+                                }
+                            }, 300); // 等待滚动完成
+                        } 
+                        // 如果菜单底部超出视口
+                        else if (menuRect.bottom > viewportHeight) {
+                            // 调整菜单位置，确保完全可见
+                            const maxHeight = viewportHeight - menuRect.top - 20;
+                            menu.style.maxHeight = maxHeight + 'px';
+                            menu.style.overflowY = 'auto';
                         }
-                    }, 0);
-                    */
+                    }, 10);
                 }
-            });
-        }
+            } else {
+                // 恢复正常z-index
+                container.style.zIndex = '';
+            }
+        });
     });
     
     // 点击页面其他区域关闭下拉菜单
@@ -213,21 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdownContainers.forEach(container => {
             if (container.classList.contains('active')) {
                 container.classList.remove('active');
-                const menu = container.querySelector('.dropdown-menu');
-                const icon = container.querySelector('.dropdown-header i');
-                if (menu) {
-                    menu.style.display = 'none';
-                    menu.style.opacity = '0';
-                    menu.style.visibility = 'hidden';
-                }
-                if (icon) {
-                    icon.style.transform = 'rotate(0)';
-                }
             }
         });
-        
-        // 清空活动下拉菜单数组
-        activeDropdowns = [];
     });
     
     // 平滑滚动到锚点
