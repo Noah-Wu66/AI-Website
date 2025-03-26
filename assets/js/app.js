@@ -62,6 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
     fixMobileDropdowns();
     window.addEventListener('resize', fixMobileDropdowns);
     
+    // 存储所有下拉菜单的状态
+    let activeDropdowns = [];
+    
     dropdownContainers.forEach(container => {
         const dropdownHeader = container.querySelector('.dropdown-header');
         const dropdownMenu = container.querySelector('.dropdown-menu');
@@ -90,6 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
+            // 更新activeDropdowns数组
+            activeDropdowns = activeDropdowns.filter(item => item.container !== container);
+            
             // 切换当前下拉菜单状态
             const isActive = container.classList.contains('active');
             container.classList.toggle('active');
@@ -110,6 +116,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 dropdownMenu.style.left = headerRect.left + 'px';
                 dropdownMenu.style.width = headerRect.width + 'px';
                 
+                // 将当前打开的下拉菜单添加到活动数组中
+                activeDropdowns.push({
+                    container: container,
+                    header: dropdownHeader,
+                    menu: dropdownMenu
+                });
+                
                 // 设置旋转动画
                 dropdownHeader.querySelector('i').style.transform = 'rotate(180deg)';
             } else {
@@ -119,6 +132,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 dropdownMenu.style.visibility = 'hidden';
                 dropdownHeader.querySelector('i').style.transform = 'rotate(0)';
                 menuPosition.isOpen = false;
+                
+                // 从活动数组中移除
+                activeDropdowns = activeDropdowns.filter(item => item.container !== container);
             }
             
             console.log('下拉菜单点击:', !isActive ? '打开' : '关闭');
@@ -153,6 +169,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // 添加滚动事件监听器，更新所有打开的下拉菜单位置
+    window.addEventListener('scroll', function() {
+        // 更新所有打开的下拉菜单的位置
+        activeDropdowns.forEach(item => {
+            if (item.container.classList.contains('active')) {
+                const headerRect = item.header.getBoundingClientRect();
+                item.menu.style.top = (headerRect.bottom + 5) + 'px';
+                item.menu.style.left = headerRect.left + 'px';
+                item.menu.style.width = headerRect.width + 'px';
+            }
+        });
+    });
+    
     // 点击页面其他区域关闭下拉菜单
     document.addEventListener('click', function() {
         dropdownContainers.forEach(container => {
@@ -170,6 +199,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+        
+        // 清空活动下拉菜单数组
+        activeDropdowns = [];
     });
     
     // 平滑滚动到锚点
