@@ -112,6 +112,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 menuPosition.headerRect = headerRect;
                 menuPosition.isOpen = true;
                 
+                // 使用fixed定位，相对于视口固定，不会随滚动移动
+                dropdownMenu.style.position = 'fixed';
                 dropdownMenu.style.top = (headerRect.bottom + 5) + 'px'; // 按钮底部位置 + 5px间距
                 dropdownMenu.style.left = headerRect.left + 'px';
                 dropdownMenu.style.width = headerRect.width + 'px';
@@ -178,6 +180,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // 触摸结束时恢复正确位置
             dropdownMenu.addEventListener('touchend', function() {
                 if (menuPosition.isOpen && menuPosition.headerRect) {
+                    // 不再重置位置，让菜单保持在固定位置
+                    /*
                     dropdownMenu.style.top = (menuPosition.headerRect.bottom + 5) + 'px';
                     dropdownMenu.style.left = menuPosition.headerRect.left + 'px';
                     dropdownMenu.style.width = menuPosition.headerRect.width + 'px';
@@ -198,38 +202,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             dropdownMenu.style.top = (menuPosition.headerRect.top - menuRect.height - 5) + 'px';
                         }
                     }, 0);
+                    */
                 }
             });
         }
-    });
-    
-    // 添加滚动事件监听器，更新所有打开的下拉菜单位置
-    window.addEventListener('scroll', function() {
-        // 更新所有打开的下拉菜单的位置
-        activeDropdowns.forEach(item => {
-            if (item.container.classList.contains('active')) {
-                const headerRect = item.header.getBoundingClientRect();
-                // 确保菜单始终跟随按钮
-                item.menu.style.top = (headerRect.bottom + 5) + 'px';
-                item.menu.style.left = headerRect.left + 'px';
-                item.menu.style.width = headerRect.width + 'px';
-                
-                // 如果菜单底部超出视口，向上调整位置
-                const menuRect = item.menu.getBoundingClientRect();
-                
-                // 检查是否接近页脚
-                const footer = document.querySelector('footer');
-                const footerRect = footer ? footer.getBoundingClientRect() : null;
-                
-                if (menuRect.bottom > window.innerHeight) {
-                    // 调整到按钮上方
-                    item.menu.style.top = (headerRect.top - menuRect.height - 5) + 'px';
-                } else if (footerRect && menuRect.bottom > footerRect.top && footerRect.top < window.innerHeight) {
-                    // 如果菜单将与可见的页脚重叠，将其调整到按钮上方
-                    item.menu.style.top = (headerRect.top - menuRect.height - 5) + 'px';
-                }
-            }
-        });
     });
     
     // 点击页面其他区域关闭下拉菜单
