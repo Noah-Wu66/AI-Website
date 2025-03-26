@@ -66,6 +66,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const dropdownHeader = container.querySelector('.dropdown-header');
         const dropdownMenu = container.querySelector('.dropdown-menu');
         
+        // 记录菜单初始位置信息
+        let menuPosition = {
+            headerRect: null,
+            isOpen: false
+        };
+        
+        // 处理点击事件
         dropdownHeader.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
@@ -96,6 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // 计算位置，确保菜单始终显示在按钮下方
                 const headerRect = dropdownHeader.getBoundingClientRect();
+                menuPosition.headerRect = headerRect;
+                menuPosition.isOpen = true;
+                
                 dropdownMenu.style.top = (headerRect.bottom + 5) + 'px'; // 按钮底部位置 + 5px间距
                 dropdownMenu.style.left = headerRect.left + 'px';
                 dropdownMenu.style.width = headerRect.width + 'px';
@@ -108,10 +118,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 dropdownMenu.style.opacity = '0';
                 dropdownMenu.style.visibility = 'hidden';
                 dropdownHeader.querySelector('i').style.transform = 'rotate(0)';
+                menuPosition.isOpen = false;
             }
             
             console.log('下拉菜单点击:', !isActive ? '打开' : '关闭');
         });
+        
+        // 添加触摸事件处理，防止拖动时菜单跟随移动
+        if (dropdownMenu) {
+            // 阻止触摸移动事件
+            dropdownMenu.addEventListener('touchmove', function(e) {
+                if (container.classList.contains('active')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, { passive: false });
+            
+            // 阻止鼠标拖动事件
+            dropdownMenu.addEventListener('mousedown', function(e) {
+                if (container.classList.contains('active')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            });
+            
+            // 触摸结束时恢复正确位置
+            dropdownMenu.addEventListener('touchend', function() {
+                if (menuPosition.isOpen && menuPosition.headerRect) {
+                    dropdownMenu.style.top = (menuPosition.headerRect.bottom + 5) + 'px';
+                    dropdownMenu.style.left = menuPosition.headerRect.left + 'px';
+                    dropdownMenu.style.width = menuPosition.headerRect.width + 'px';
+                }
+            });
+        }
     });
     
     // 点击页面其他区域关闭下拉菜单
