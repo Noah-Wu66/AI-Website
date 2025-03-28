@@ -228,6 +228,7 @@ nav {
     margin-bottom: 24px;
     background: linear-gradient(135deg, var(--text-color) 0%, var(--secondary-color) 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -235,6 +236,7 @@ nav {
     color: var(--primary-color);
     background: linear-gradient(135deg, var(--primary-color) 0%, #2a93ff 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -304,9 +306,121 @@ nav {
     flex-direction: column;
 }
 
+.app-card.special-card {
+    position: relative;
+    background: linear-gradient(135deg, #ffffff, #fffdf5);
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 2px solid rgba(255, 215, 0, 0.6);
+    z-index: 10;
+    animation: specialCardPulse 3s infinite;
+    overflow: hidden;
+}
+
+@keyframes specialCardPulse {
+    0% {
+        box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.05);
+        border-color: rgba(255, 215, 0, 0.6);
+    }
+    50% {
+        box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4), 0 5px 20px rgba(0, 0, 0, 0.1);
+        border-color: rgba(255, 215, 0, 0.9);
+    }
+    100% {
+        box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.05);
+        border-color: rgba(255, 215, 0, 0.6);
+    }
+}
+
+.app-card.special-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(to right, #ffd700, #ffa500);
+    z-index: 1;
+}
+
+.app-card.special-card .shine-effect {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.03) 30%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.03) 70%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(45deg);
+    z-index: 2;
+    animation: shineEffect 5s infinite;
+    pointer-events: none;
+}
+
+@keyframes shineEffect {
+    0% { 
+        left: -100%; 
+        top: -100%;
+    }
+    20% { 
+        left: 100%; 
+        top: 100%;
+    }
+    100% { 
+        left: 100%; 
+        top: 100%;
+    }
+}
+
+.app-card.special-card .app-icon {
+    background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.2) 0%, rgba(255, 255, 255, 1) 70%);
+}
+
+.app-card.special-card h3 {
+    color: #000;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.app-card.special-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(to right, #ffd700, #ffa500);
+}
+
+.app-card.special-card::after {
+    content: '推荐';
+    position: absolute;
+    top: 8px;
+    right: -30px;
+    background: linear-gradient(to right, #ffd700, #ffa500);
+    color: #000;
+    font-weight: bold;
+    font-size: 10px;
+    padding: 3px 30px;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+}
+
 .app-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.app-card.special-card:hover {
+    transform: translateY(-5px) scale(1.02);
 }
 
 .app-icon {
@@ -358,6 +472,17 @@ nav {
     font-weight: 500;
     padding: 5px 12px;
     border-radius: 30px;
+}
+
+.tag.highlight {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+    position: relative;
+    border: 2px solid transparent;
+    letter-spacing: 0.5px;
+    z-index: 5;
 }
 
 .app-links {
@@ -530,6 +655,14 @@ footer {
         z-index: 99999;
     }
     
+    .tag.highlight {
+        padding: 6px 12px;
+        margin-right: 8px;
+        font-size: 12px;
+        letter-spacing: 0.8px;
+        box-shadow: 0 2px 6px rgba(255, 215, 0, 0.4);
+    }
+    
     .dropdown-menu {
         width: 100%;
         max-height: 0;
@@ -542,6 +675,108 @@ footer {
         overflow-y: auto;
         z-index: 99999;
         position: absolute;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+        max-height: 80vh;
+    }
+    
+    .modal-app-evaluation,
+    .modal-app-links {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .modal-app-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .modal-app-icon {
+        margin-bottom: 10px;
+    }
+
+    .close-modal {
+        font-size: 32px;
+        padding: 0 8px;
+        position: absolute;
+        right: 20px;
+        top: 15px;
+    }
+
+    .modal-header {
+        position: relative;
+        padding: 15px 20px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-app-content h4 {
+        margin: 20px 0 10px;
+        font-size: 18px;
+    }
+
+    .modal-app-content ul li {
+        margin-bottom: 8px;
+    }
+
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .modal.mobile-view .modal-content {
+        margin: 0;
+        border-radius: 20px 20px 0 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        max-height: 85vh;
+    }
+
+    .app-card.special-card {
+        transform: translateY(-3px) scale(1.01);
+        animation: specialCardPulse 4s infinite;
+    }
+    
+    .app-card.special-card::after {
+        font-size: 10px;
+        top: 8px;
+        right: -30px;
+        padding: 3px 30px;
+    }
+    
+    .app-card.special-card:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+
+    @keyframes shineEffect {
+        0% { 
+            left: -150%; 
+            top: -150%;
+        }
+        25% { 
+            left: 150%; 
+            top: 150%;
+        }
+        100% { 
+            left: 150%; 
+            top: 150%;
+        }
     }
 }
 
@@ -559,16 +794,23 @@ footer {
         padding: 8px 16px;
     }
     
+    .modal-content {
+        width: 92%;
+        margin: 5% auto;
+        border-radius: 16px;
+    }
+    
     .modal-small {
         width: 90%;
         max-width: none;
     }
     
     .website-link {
-        padding: 10px 14px;
+        padding: 12px;
         font-size: 14px;
+        margin-bottom: 8px;
     }
-    
+
     .dropdown-container {
         width: 100%;
     }
@@ -577,6 +819,32 @@ footer {
         width: 100%;
         min-width: unset;
         border-radius: 0 0 20px 20px;
+    }
+
+    .modal-app-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .modal-app-icon img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .modal-app-header h3 {
+        font-size: 22px;
+    }
+
+    .modal-header h2 {
+        font-size: 20px;
+    }
+
+    .evaluation-item {
+        padding: 15px;
+    }
+
+    .modal-app-evaluation {
+        margin: 20px 0;
     }
 }
 
@@ -653,6 +921,33 @@ footer {
     display: block;
     opacity: 1;
     visibility: visible;
+}
+
+/* 移动端特有样式 */
+.modal.mobile-view .modal-content {
+    animation: modalSlideUp 0.35s ease;
+}
+
+@keyframes modalSlideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .modal.mobile-view .modal-content {
+        margin: 0;
+        border-radius: 20px 20px 0 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        max-height: 85vh;
+    }
 }
 
 .modal-content {
@@ -822,24 +1117,6 @@ footer {
 
 .link-item a:hover {
     text-decoration: underline;
-}
-
-@media screen and (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-        margin: 5% auto;
-    }
-    
-    .modal-app-evaluation,
-    .modal-app-links {
-        grid-template-columns: 1fr;
-    }
-    
-    .modal-app-info {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
 }
 
 /* 下拉菜单容器 */

@@ -209,6 +209,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 应用详情数据
     const appData = {
+        lobechat: {
+            name: "LobeChat",
+            category: "AI对话",
+            icon: "assets/img/lobechat.png",
+            intro: "LobeChat是一个开源的现代化AI对话框架，支持多种AI提供商(OpenAI/Claude 3/Gemini/Ollama/DeepSeek/Qwen)，知识库管理(文件上传/知识管理/RAG)，多模态交互(插件/工具)和思考链。该项目结合了现代设计理念，为用户提供了一键免费部署私人ChatGPT/Claude/DeepSeek应用的能力。作为GitHub上备受欢迎的开源项目之一，LobeChat提供了丰富的功能集，包括角色扮演、插件增强、知识库搜索和多模态交互等，使AI对话体验更加强大和个性化。项目完全开源，鼓励社区贡献和定制开发。",
+            features: [
+                "支持多种AI模型提供商，包括OpenAI、Claude 3、Gemini、Ollama等",
+                "内置知识库管理系统，支持文件上传和RAG检索增强生成",
+                "插件生态系统，可扩展AI助手的功能",
+                "多模态交互支持，可处理文本、图像等多种输入",
+                "思考链功能，使AI推理过程更透明",
+                "现代化设计界面，用户体验出色",
+                "一键部署功能，轻松搭建私人AI助手",
+                "完全开源，可自由定制和扩展"
+            ],
+            pros: "开源免费、设计优雅、功能丰富、多模型支持",
+            cons: "需要自备API密钥、部分高级功能需要配置",
+            website: "http://chat.zephyr.top/",
+            tutorial: "https://www.bilibili.com/video/BV1mS411N7RJ/"
+        },
         deepseek: {
             name: "DeepSeek",
             category: "AI对话",
@@ -538,25 +558,24 @@ document.addEventListener('DOMContentLoaded', function() {
     function openModal(appId) {
         console.log("打开模态框，应用ID:", appId); // 调试信息
         
-        // 先清除模态框，确保每次显示全新状态
         const modalElement = document.getElementById('appDetailModal');
         if (modalElement) {
-            // 重置任何可能的内联样式
+            // 清除之前可能存在的样式
             modalElement.style = '';
             
-            // 重置模态框内容的滚动位置到顶部
+            // 对于移动设备，使用不同的动画和位置
+            if (window.innerWidth <= 768) {
+                modalElement.classList.add('mobile-view');
+            } else {
+                modalElement.classList.remove('mobile-view');
+            }
+            
             const modalContent = modalElement.querySelector('.modal-content');
             if (modalContent) {
-                // 重置内容区域的任何样式
+                // 重置滚动位置
                 modalContent.style = '';
                 modalContent.scrollTop = 0;
             }
-            
-            // 重置模态框内部所有滚动区域
-            const scrollableElements = modalElement.querySelectorAll('.modal-body, .modal-content');
-            scrollableElements.forEach(elem => {
-                elem.scrollTop = 0;
-            });
         }
         
         if (appData[appId]) {
