@@ -1,5 +1,8 @@
 // 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', function() {
+    // 清除网站缓存和cookie
+    clearSiteCache();
+    
     // 处理移动端菜单
     const mobileMenu = document.querySelector('.mobile-menu');
     const navLinks = document.querySelector('.nav-links');
@@ -886,4 +889,87 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         }
     }
-}); 
+});
+
+// 清除网站缓存和cookie的函数
+function clearSiteCache() {
+    // 清除所有cookie
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+    }
+    
+    // 尝试清除缓存
+    if ('caches' in window) {
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.map(function(cacheName) {
+                    return caches.delete(cacheName);
+                })
+            );
+        });
+    }
+    
+    // 使用Cache-Control和Pragma头控制缓存
+    if (window.performance && window.performance.navigation.type !== 1) {  // 如果不是刷新操作
+        // 添加元标记以防止缓存
+        const metaCache = document.createElement('meta');
+        metaCache.httpEquiv = 'Cache-Control';
+        metaCache.content = 'no-cache, no-store, must-revalidate';
+        document.head.appendChild(metaCache);
+        
+        const metaPragma = document.createElement('meta');
+        metaPragma.httpEquiv = 'Pragma';
+        metaPragma.content = 'no-cache';
+        document.head.appendChild(metaPragma);
+        
+        const metaExpires = document.createElement('meta');
+        metaExpires.httpEquiv = 'Expires';
+        metaExpires.content = '0';
+        document.head.appendChild(metaExpires);
+    }
+    
+    // 为所有资源添加时间戳参数，防止缓存
+    function addTimestampToAssets() {
+        const timestamp = new Date().getTime();
+        
+        // 为CSS文件添加时间戳
+        document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+            if (link.href && !link.href.includes('cdnjs.cloudflare.com')) { // 跳过CDN资源
+                link.href = updateUrlWithTimestamp(link.href, timestamp);
+            }
+        });
+        
+        // 为JS文件添加时间戳
+        document.querySelectorAll('script[src]').forEach(script => {
+            if (script.src && !script.src.includes('cdnjs.cloudflare.com')) { // 跳过CDN资源
+                script.src = updateUrlWithTimestamp(script.src, timestamp);
+            }
+        });
+        
+        // 为图片添加时间戳
+        document.querySelectorAll('img').forEach(img => {
+            if (img.src) {
+                img.src = updateUrlWithTimestamp(img.src, timestamp);
+            }
+        });
+    }
+    
+    // 辅助函数：更新URL添加时间戳
+    function updateUrlWithTimestamp(url, timestamp) {
+        const urlObj = new URL(url, window.location.href);
+        urlObj.searchParams.set('_t', timestamp);
+        return urlObj.href;
+    }
+    
+    // 添加时间戳到静态资源
+    addTimestampToAssets();
+    
+    // 监听页面加载完成，再次尝试添加时间戳（处理动态加载的内容）
+    window.addEventListener('load', function() {
+        setTimeout(addTimestampToAssets, 500);
+    });
+} 
