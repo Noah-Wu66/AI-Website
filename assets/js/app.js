@@ -378,6 +378,137 @@ document.addEventListener('DOMContentLoaded', function() {
             website: "https://www.cursor.com/",
             tutorial: "https://www.bilibili.com/video/BV1zm4w1R7Me/"
         },
+        yuewen: {
+            name: "阶跃星辰",
+            category: "AI对话/AI视频/AI语音",
+            icon: "assets/img/yuewen.png",
+            intro: "阶跃星辰是由前微软全球副总裁姜大昕于2023年4月创立的中国人工智能公司，总部位于上海，专注于通用人工智能技术研发，已推出Step系列大模型，包括万亿参数语言模型Step-2、多模态模型Step-1.5V及视频生成模型Step-Video-T2V等，覆盖文本、图像、语音、视频多模态能力，并在LiveBench等国际评测中位列国产大模型前列。公司凭借技术实力获数亿美元B轮融资，估值超20亿美元，团队汇聚ResNet作者张祥雨等顶尖人才，研发人员占比超80%，产品涵盖智能助手\"跃问\"、开放平台\"冒泡鸭\"，并开源多模态模型推动生态共建，赋能金融、智能汽车、手机终端等场景。",
+            features: [
+                "支持文本生成、图像创作和内容优化",
+                "提供专业领域知识和创意内容生成",
+                "适合内容创作者和媒体工作者使用",
+                "中文优化，符合国内用户使用习惯",
+                "支持批量生成和项目管理"
+            ],
+            pros: "免费",
+            cons: "很小众，视频模型参数小",
+            website: "https://yuewen.cn/",
+            tutorial: "https://www.bilibili.com/video/BV1vuABewEs9/"
+        },
+        chatgpt: {
+            name: "ChatGPT",
+            category: "AI对话",
+            icon: "assets/img/chatgpt.png",
+            intro: "ChatGPT是由OpenAI开发的先进对话式人工智能模型，2022年11月发布并迅速成为AI领域里程碑。它基于GPT（生成式预训练转换器）架构，最新版本GPT-4o拥有数万亿参数，通过大规模互联网文本训练，擅长理解上下文，产生连贯、相关且自然的回应。其强大功能包括撰写内容、回答问题、总结文本、编写代码、解决数学问题及创作诗歌等，并支持多模态交互，可处理文本、图像、音频输入及生成图像(DALL-E)、语音和文本内容，成为全球用户最多、应用最广的通用型AI助手，服务于200多个国家和地区。",
+            features: [
+                "强大的通用对话能力，能理解复杂问题并给出详细回答",
+                "多模态支持，可处理文本、图像输入并生成各种内容",
+                "内置DALL-E图像生成功能，支持高质量文本到图像转换",
+                "支持代码编写和调试，覆盖多种编程语言",
+                "可插件扩展，支持网页搜索、数据分析等高级功能",
+                "多语言支持，中文理解和生成能力出色",
+                "可自定义GPT助手，满足专业领域应用需求"
+            ],
+            pros: "通用能力最强，DALL-E图像生成质量高，插件生态丰富",
+            cons: "价格偏高，有时会因服务器负载延迟，信息可能不够实时",
+            website: "https://chat.openai.com/",
+            tutorial: "https://www.bilibili.com/video/BV1ux4y197kL/"
+        },
+        "chatgpt-dalle": {
+            name: "ChatGPT (DALL-E)",
+            category: "AI绘画",
+            icon: "assets/img/chatgpt.png",
+            intro: "DALL-E是由OpenAI开发的先进图像生成AI模型，作为ChatGPT的重要组成部分，能从自然语言描述创建高度详细和创意丰富的图像。最新版DALL-E 3在2023年10月发布，集成于ChatGPT Plus，支持通过对话式交互创建、编辑和变换图像，生成分辨率最高可达1024×1024像素。其核心技术基于扩散模型，通过数十亿参数网络将文本提示转化为视觉表现，擅长还原复杂场景、人物构图和各种艺术风格，并加强了对文本渲染、标志设计和符号融合的能力。DALL-E 3特别注重在图像中精确包含文本说明中的细节，大幅提升了用户提示与生成结果的一致性，广泛应用于创意设计、内容创作、教育和产品可视化领域。",
+            features: [
+                "卓越的文本到图像生成能力，还原力强",
+                "支持多种艺术风格和视觉效果创作",
+                "通过ChatGPT界面提供无缝的对话式图像生成体验",
+                "能理解复杂的文本提示，包含多个对象和场景要求",
+                "支持修改已生成图像，调整细节或风格",
+                "生成多个变体，为创意选择提供更多可能",
+                "增强型安全措施，有效过滤不适当内容"
+            ],
+            pros: "生成质量高，创意表达丰富，与ChatGPT完美集成，操作简单直观",
+            cons: "高级功能需要ChatGPT Plus订阅，有内容限制，生成速度可能受服务器影响",
+            website: "https://chat.openai.com/",
+            tutorial: "https://www.bilibili.com/video/BV1Gj421i7gj/"
+        },
+        gemini: {
+            name: "Gemini",
+            category: "AI对话",
+            icon: "assets/img/gemini.png",
+            intro: "Gemini是Google DeepMind于2023年12月推出的多模态大型语言模型，包括Ultra、Pro和Nano三个版本，覆盖云端服务到移动设备场景。它基于全新架构开发，在理解能力、推理及代码生成上显著超越前代模型，可处理和生成文本、代码、图像、音频和视频内容。Gemini Ultra成为首个在MMLU测试中超越人类专家的AI模型，并已集成至Google搜索、Workspace等核心产品。2024年推出的Gemini 1.5系列引入全新的混合注意力机制(MXA)，将上下文长度扩展至200万tokens，并在保持性能不变的同时提供低延迟响应。Gemini Advanced订阅用户更可获取Ultra版本，享受实时数据访问及Project Astra高级功能，成为Google AI战略中对抗ChatGPT的核心产品。",
+            features: [
+                "强大的多模态能力，可同时处理文本、图像和视频输入",
+                "与Google生态系统深度集成，包括搜索、Gmail、文档和地图",
+                "实时联网功能，可获取最新信息并引用来源",
+                "卓越的编码能力，支持多种编程语言和框架",
+                "内置高级AI安全功能，减少错误信息传播",
+                "支持超长上下文理解，最多可处理200万tokens",
+                "免费版提供基础功能，Advanced版提供最高性能体验"
+            ],
+            pros: "多模态能力强大，Google生态集成深入，实时数据访问准确",
+            cons: "Advanced版本仅限部分地区使用，某些功能需要付费订阅",
+            website: "https://gemini.google.com/",
+            tutorial: "https://www.bilibili.com/video/BV1LC411T78P/"
+        },
+        "gemini-image": {
+            name: "Gemini",
+            category: "AI绘画",
+            icon: "assets/img/gemini.png",
+            intro: "Gemini的图像生成能力是其多模态AI系统的核心组成部分，支持通过自然语言描述创建各种风格和主题的图像。基于Google DeepMind的Imagen 2图像生成技术，生成的图像具有高度细节和真实感，覆盖照片级真实图像、艺术风格、插图和概念图等多种类型。用户可以通过描述场景、指定风格或参考示例来引导创作过程，获得符合预期的视觉效果。Gemini Advanced版本提供更高质量的图像生成能力，可实现更复杂的场景和风格要求，同时兼顾安全和内容政策，防止生成不适当内容。作为Google AI生态系统的重要组成部分，Gemini的图像生成功能广泛应用于创意设计、内容创作、教育演示和产品可视化等领域。",
+            features: [
+                "强大的文本到图像转换能力，支持详细的场景描述",
+                "与Google搜索集成，可引用和参考网络图像风格",
+                "多样化的艺术风格支持，从写实到抽象均可实现",
+                "通过一致的对话界面提供无缝图像生成体验",
+                "支持多轮修改和调整，精确控制图像效果",
+                "与Google相册等服务集成，便于管理生成的图像",
+                "内置安全措施，确保生成内容符合伦理标准"
+            ],
+            pros: "与Google服务深度集成，生成速度快，免费版已提供基础功能",
+            cons: "相比专业图像生成工具细节控制较少，高级功能需付费订阅",
+            website: "https://gemini.google.com/",
+            tutorial: "https://www.bilibili.com/video/BV1m64y1m7iK/"
+        },
+        grok: {
+            name: "Grok",
+            category: "AI对话",
+            icon: "assets/img/grok.png",
+            intro: "Grok是由埃隆·马斯克创立的xAI公司于2023年11月推出的AI对话模型，其名称灵感来自科幻作家海因莱因小说中\"充分而深刻理解\"的概念。最新的Grok 3版本基于混合专家(MoE)架构，在AIME和LiveCodeBench等各项基准测试中表现卓越，支持多模式使用，包括思考模式(强化推理)和DeepSearch(深度网络搜索)功能。Grok的独特之处在于其直接访问X平台实时数据的能力和相对更为幽默、开放的回应风格，不拘泥于过度审慎的表达。xAI通过名为Colossus的超级计算机支持Grok的训练和运行，该系统装配了超过20万个NVIDIA H100 GPU，计算能力持续扩展，使Grok能在复杂推理、测试时间缩放计算(TTCS)等方面不断优化，尤其在解决复杂问题和代码生成领域表现突出。",
+            features: [
+                "实时信息访问能力，特别是对X平台数据的直接获取",
+                "幽默风格和相对开放的交流方式，回应不过度保守",
+                "支持深度推理和思考模式，适合复杂问题解析",
+                "DeepSearch功能提供实时网络数据检索与验证",
+                "强大的代码生成和调试能力",
+                "支持多轮对话和上下文理解",
+                "专为创造性和探索性对话设计的界面"
+            ],
+            pros: "实时数据获取能力强，互动风格独特有趣，代码和数学问题解决能力出色",
+            cons: "相比其他顶级AI模型覆盖面较窄，有时回答可能过于直接或具争议性",
+            website: "https://grok.x.ai/",
+            tutorial: "https://www.bilibili.com/video/BV1Fz421a7wW/"
+        },
+        "grok-image": {
+            name: "Grok",
+            category: "AI绘画",
+            icon: "assets/img/grok.png",
+            intro: "Grok的图像生成功能是xAI最新推出的多模态能力之一，允许用户通过文本描述创建视觉内容。目前Grok使用Black Forest Labs的FLUX模型提供图像生成服务，同时xAI正在开发自己的Aurora图像模型作为未来替代。Grok的图像生成风格独特，往往融合了其标志性的幽默和创意表达方式，能根据文本提示创建从写实到抽象的各种视觉效果。作为一个集成在X平台的功能，Grok图像生成允许用户在对话过程中无缝切换文本和图像交互，创建内容后可直接分享至X社交网络。与传统图像生成工具不同，Grok的风格定位更加强调创意自由和表达，减少了一些常见的创作限制，允许用户探索更广泛的主题和表现形式，特别适合需要独特视觉表达的创意项目和社交媒体内容创作。",
+            features: [
+                "独特的创意风格，融合幽默和艺术表现",
+                "与X平台深度集成，便于生成并分享内容",
+                "支持多种艺术风格和视觉效果",
+                "通过对话式界面提供流畅的图像生成体验",
+                "能理解较为复杂的场景描述和风格要求",
+                "实时生成和优化，响应速度快",
+                "支持创意自由度较高的图像生成"
+            ],
+            pros: "创意表达自由度高，生成速度快，与X平台无缝集成",
+            cons: "对复杂精细场景的控制能力有限，当前版本仍在发展中",
+            website: "https://grok.x.ai/",
+            tutorial: "https://www.bilibili.com/video/BV1m84y1F7P1/"
+        },
         trae: {
             name: "Trae",
             category: "AI编程",
@@ -431,23 +562,6 @@ document.addEventListener('DOMContentLoaded', function() {
             cons: "贵，国内版内容审核较严格",
             website: "https://chat.minimaxi.com/",
             tutorial: "https://www.bilibili.com/video/BV1KPBqYEErU/"
-        },
-        yuewen: {
-            name: "阶跃星辰",
-            category: "AI对话/AI视频/AI语音",
-            icon: "assets/img/yuewen.png",
-            intro: "阶跃星辰是由前微软全球副总裁姜大昕于2023年4月创立的中国人工智能公司，总部位于上海，专注于通用人工智能技术研发，已推出Step系列大模型，包括万亿参数语言模型Step-2、多模态模型Step-1.5V及视频生成模型Step-Video-T2V等，覆盖文本、图像、语音、视频多模态能力，并在LiveBench等国际评测中位列国产大模型前列。公司凭借技术实力获数亿美元B轮融资，估值超20亿美元，团队汇聚ResNet作者张祥雨等顶尖人才，研发人员占比超80%，产品涵盖智能助手\"跃问\"、开放平台\"冒泡鸭\"，并开源多模态模型推动生态共建，赋能金融、智能汽车、手机终端等场景。",
-            features: [
-                "支持文本生成、图像创作和内容优化",
-                "提供专业领域知识和创意内容生成",
-                "适合内容创作者和媒体工作者使用",
-                "中文优化，符合国内用户使用习惯",
-                "支持批量生成和项目管理"
-            ],
-            pros: "免费",
-            cons: "很小众，视频模型参数小",
-            website: "https://yuewen.cn/",
-            tutorial: "https://www.bilibili.com/video/BV1vuABewEs9/"
         },
         fishaudio: {
             name: "Fish Audio",
