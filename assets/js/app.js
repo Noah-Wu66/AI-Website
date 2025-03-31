@@ -414,11 +414,11 @@ document.addEventListener('DOMContentLoaded', function() {
             ],
             pros: "通用能力最强，DALL-E图像生成质量高，插件生态丰富",
             cons: "价格偏高，有时会因服务器负载延迟，信息可能不够实时",
-            website: "https://chat.openai.com/",
-            tutorial: "https://www.bilibili.com/video/BV1ux4y197kL/"
+            website: "https://chatgpt.com/",
+            tutorial: "https://www.bilibili.com/video/BV1mf42197bA/"
         },
         "chatgpt-dalle": {
-            name: "ChatGPT (DALL-E)",
+            name: "ChatGPT",
             category: "AI绘画",
             icon: "assets/img/chatgpt.png",
             intro: "DALL-E是由OpenAI开发的先进图像生成AI模型，作为ChatGPT的重要组成部分，能从自然语言描述创建高度详细和创意丰富的图像。最新版DALL-E 3在2023年10月发布，集成于ChatGPT Plus，支持通过对话式交互创建、编辑和变换图像，生成分辨率最高可达1024×1024像素。其核心技术基于扩散模型，通过数十亿参数网络将文本提示转化为视觉表现，擅长还原复杂场景、人物构图和各种艺术风格，并加强了对文本渲染、标志设计和符号融合的能力。DALL-E 3特别注重在图像中精确包含文本说明中的细节，大幅提升了用户提示与生成结果的一致性，广泛应用于创意设计、内容创作、教育和产品可视化领域。",
@@ -433,8 +433,8 @@ document.addEventListener('DOMContentLoaded', function() {
             ],
             pros: "生成质量高，创意表达丰富，与ChatGPT完美集成，操作简单直观",
             cons: "高级功能需要ChatGPT Plus订阅，有内容限制，生成速度可能受服务器影响",
-            website: "https://chat.openai.com/",
-            tutorial: "https://www.bilibili.com/video/BV1Gj421i7gj/"
+            website: "https://chatgpt.com/",
+            tutorial: "https://www.bilibili.com/video/BV1mf42197bA/"
         },
         gemini: {
             name: "Gemini",
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function() {
             pros: "多模态能力强大，Google生态集成深入，实时数据访问准确",
             cons: "Advanced版本仅限部分地区使用，某些功能需要付费订阅",
             website: "https://gemini.google.com/",
-            tutorial: "https://www.bilibili.com/video/BV1LC411T78P/"
+            tutorial: "https://www.bilibili.com/video/BV1mv421y7y8/"
         },
         "gemini-image": {
             name: "Gemini",
@@ -472,7 +472,7 @@ document.addEventListener('DOMContentLoaded', function() {
             pros: "与Google服务深度集成，生成速度快，免费版已提供基础功能",
             cons: "相比专业图像生成工具细节控制较少，高级功能需付费订阅",
             website: "https://gemini.google.com/",
-            tutorial: "https://www.bilibili.com/video/BV1m64y1m7iK/"
+            tutorial: "https://www.bilibili.com/video/BV1mv421y7y8/"
         },
         grok: {
             name: "Grok",
@@ -490,8 +490,8 @@ document.addEventListener('DOMContentLoaded', function() {
             ],
             pros: "实时数据获取能力强，互动风格独特有趣，代码和数学问题解决能力出色",
             cons: "相比其他顶级AI模型覆盖面较窄，有时回答可能过于直接或具争议性",
-            website: "https://grok.x.ai/",
-            tutorial: "https://www.bilibili.com/video/BV1Fz421a7wW/"
+            website: "https://grok.com/",
+            tutorial: "https://www.bilibili.com/video/BV1eLPxeYEeS/"
         },
         "grok-image": {
             name: "Grok",
@@ -509,8 +509,8 @@ document.addEventListener('DOMContentLoaded', function() {
             ],
             pros: "创意表达自由度高，生成速度快，与X平台无缝集成",
             cons: "对复杂精细场景的控制能力有限，当前版本仍在发展中",
-            website: "https://grok.x.ai/",
-            tutorial: "https://www.bilibili.com/video/BV1m84y1F7P1/"
+            website: "https://grok.com/",
+            tutorial: "https://www.bilibili.com/video/BV1eLPxeYEeS/"
         },
         trae: {
             name: "Trae",
