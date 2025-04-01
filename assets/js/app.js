@@ -887,10 +887,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
-
-// 清除网站缓存和cookie的函数（已禁用）
-function clearSiteCache() {
-    // 此函数已被禁用，以避免每次加载页面时清除缓存
-    console.log('缓存清除功能已禁用');
-    return;
-}
